@@ -57,9 +57,9 @@ dependencies {
     implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
 
     //Room
-    implementation "androidx.room:room-runtime:2.5.2"
     implementation "androidx.room:room-ktx:2.5.2"
     kapt "androidx.room:room-compiler:2.5.2"
+    implementation "androidx.room:room-paging:2.5.2"
 
     // Coroutine Lifecycle Scopes
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
@@ -77,8 +77,8 @@ dependencies {
     //implementation "com.airbnb.android:lottie-compose:5.0.3"
 
     // Paging
-    //implementation "androidx.paging:paging-runtime-ktx:3.1.1"
-   // implementation "androidx.paging:paging-compose:3.2.0-rc01"
+    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
+    implementation "androidx.paging:paging-compose:3.2.0-rc01"
 
     implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"

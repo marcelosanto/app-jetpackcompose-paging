@@ -6,12 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
+import dagger.hilt.android.AndroidEntryPoint
+import xyz.marcelo.androidapptemplate.presentation.BeerScreen
+import xyz.marcelo.androidapptemplate.presentation.BeerViewModel
 import xyz.marcelo.androidapptemplate.ui.theme.AndroidAppTemplateTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,22 +25,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    val viewModel = hiltViewModel<BeerViewModel>()
+                    val beers = viewModel.beerPagingFlow.collectAsLazyPagingItems()
+                    BeerScreen(beers = beers)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    AndroidAppTemplateTheme {
-        Greeting("Android")
     }
 }
